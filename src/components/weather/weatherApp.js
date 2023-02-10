@@ -7,7 +7,8 @@ import styles from "./weatherApp.module.css";
 
 export default function WeatherApp() {
   const [weather, setWeather] = useState(null);
-
+  const REACT_APP_KEY = "c780496d19ec471d86f30040221304";
+  const REACT_APP_URL = "http://api.weatherapi.com/v1/current.json?aqi=no";
   useEffect(() => {
     loadInfo();
   }, []);
@@ -18,11 +19,11 @@ export default function WeatherApp() {
 
   async function loadInfo(city = "london") {
     console.log(
-      `${process.env.REACT_APP_URL}&key=${process.env.REACT_APP_KEY}&q=${city}`
+      `${REACT_APP_URL}&key=${REACT_APP_KEY}&q=${city}`
     );
     try {
       const request = await fetch(
-        `${process.env.REACT_APP_URL}&key=${process.env.REACT_APP_KEY}&q=${city}`
+        `${REACT_APP_URL}&key=${REACT_APP_KEY}&q=${city}`
       );
       const json = await request.json();
       console.log(json);
